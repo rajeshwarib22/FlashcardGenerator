@@ -6,7 +6,7 @@ Instant flashcard generation from PDFs using AI. Upload a document, get study ca
 
 ## 📖 What Is It?
 
-DummyDodo converts any PDF into interactive flashcards using AI. Upload → AI generates cards → Study with progress tracking.
+DummyDodo converts any PDF into interactive flashcards using AI. Upload → AI generates cards → Study with progress tracking from the flashcards.
 
 ---
 
@@ -21,19 +21,20 @@ DummyDodo converts any PDF into interactive flashcards using AI. Upload → AI g
 
 ## 🛠️ Tech Stack
 
-| Component | Tech |
-|-----------|------|
-| Frontend | React, Framer Motion |
-| Backend | Python |
-| Database | Supabase (PostgreSQL + pgvector) |
-| LLM | Groq API (llama-3.1-8b-instant) |
-| File Parse | pdf-parse (JavaScript) |
+| Component  | Tech                             |
+| ---------- | -------------------------------- |
+| Frontend   | React, Framer Motion             |
+| Backend    | Python                           |
+| Database   | Supabase (PostgreSQL + pgvector) |
+| LLM        | Groq API (llama-3.1-8b-instant)  |
+| File Parse | pdf-parse (JavaScript)           |
 
 ---
 
 ## 🤖 How Groq LLM Works
 
 Groq is an AI inference platform. When you upload a PDF:
+
 - Text extracted → Sent to Groq API with prompt
 - Groq's Mixtral-8x7b model processes the text
 - Returns JSON with questions, answers, and difficulty levels
@@ -46,6 +47,7 @@ Groq is an AI inference platform. When you upload a PDF:
 ## 🔧 Backend Processing (JavaScript/Node.js)
 
 No Python used. Everything is JavaScript:
+
 - `pdf-parse` library extracts text from PDFs (JavaScript)
 - `axios` sends HTTP requests to Groq API (JavaScript)
 - `@supabase/supabase-js` manages database queries (JavaScript)
@@ -68,8 +70,8 @@ No Python used. Everything is JavaScript:
 ## 🚀 Deployment
 
 - **Frontend & Backend** Vercel (free)
-- **Database:** Supabase 
-- **LLM:** Groq 
+- **Database:** Supabase
+- **LLM:** Groq
 
 **Total Cost: $0/month**
 
