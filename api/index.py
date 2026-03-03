@@ -17,18 +17,25 @@ from dotenv import load_dotenv
 # Load Environment Variables
 # ==============================
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-load_dotenv(os.path.join(BASE_DIR, ".env"))
+# Try to load .env file if it exists (for local development)
+try:
+    load_dotenv()
+except:
+    pass
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
-if not SUPABASE_URL or not SUPABASE_KEY:
-    raise ValueError("Missing SUPABASE_URL or SUPABASE_KEY in .env file")
+# Validate required environment variables
+if not SUPABASE_URL:
+    raise ValueError("Missing SUPABASE_URL environment variable")
+
+if not SUPABASE_KEY:
+    raise ValueError("Missing SUPABASE_KEY environment variable")
 
 if not GROQ_API_KEY:
-    raise ValueError("Missing GROQ_API_KEY in .env file")
+    raise ValueError("Missing GROQ_API_KEY environment variable")
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
