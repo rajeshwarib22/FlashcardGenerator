@@ -2,7 +2,8 @@ import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import axios from 'axios'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+// const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '')
 
 export default function Uploader({ onSuccess }) {
   const [loading, setLoading] = useState(false)
@@ -29,7 +30,7 @@ export default function Uploader({ onSuccess }) {
       formData.append('name', file.name.replace('.pdf', ''))
 
       const { data } = await axios.post(
-        `${API_URL}api/upload`,
+        `${API_URL}/api/upload`,
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       )

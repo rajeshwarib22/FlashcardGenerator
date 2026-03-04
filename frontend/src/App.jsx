@@ -8,7 +8,8 @@ import Uploader from './components/Uploader'
 import DocumentList from './components/DocumentList'
 import StudyView from './components/StudyView'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+// const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '')
 
 function MainApp() {
   const [documents, setDocuments] = useState([])
