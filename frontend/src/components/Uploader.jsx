@@ -29,7 +29,7 @@ export default function Uploader({ onSuccess }) {
       formData.append('name', file.name.replace('.pdf', ''))
 
       const { data } = await axios.post(
-        `${API_URL}/api/upload`,
+        `${API_URL}api/upload`,
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       )

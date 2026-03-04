@@ -24,7 +24,7 @@ export default function StudyView({ documentId, onBack }) {
   const fetchCards = async () => {
     try {
       const { data } = await axios.get(
-        `${API_URL}/api/documents/${documentId}/cards`
+        `${API_URL}api/documents/${documentId}/cards`
       )
       setCards(data)
     } catch (err) {
@@ -36,7 +36,7 @@ export default function StudyView({ documentId, onBack }) {
 
   const fetchInfo = async () => {
     try {
-      const { data } = await axios.get(`${API_URL}/api/documents/${documentId}`)
+      const { data } = await axios.get(`${API_URL}api/documents/${documentId}`)
       setDocInfo(data)
     } catch (err) {
       console.error(err)
@@ -45,7 +45,7 @@ export default function StudyView({ documentId, onBack }) {
 
   const saveProgress = async (cardId, isCorrect) => {
     try {
-      await axios.post(`${API_URL}/api/progress`, {
+      await axios.post(`${API_URL}api/progress`, {
         cardId,
         isCorrect,
       })
